@@ -41,6 +41,11 @@ function onload(){
 		$('#nav').toggleClass('open');
 	});
 
+	$('.main-nav li a').on('click', function() {
+		$('#nav').toggleClass('open');
+	});
+
+
 	///////////////////////////
 	// Mobile dropdown
 	$('.has-dropdown a').on('click', function() {
@@ -54,6 +59,9 @@ function onload(){
 
 		// Fixed nav
 		wScroll > 1 ? $('#nav').addClass('fixed-nav') : $('#nav').removeClass('fixed-nav');
+
+		// Back To Top Appear
+		wScroll > 200 ? $('#nav').removeClass('nav-transparent') : $('#nav').addClass('nav-transparent');
 
 		// Back To Top Appear
 		wScroll > 700 ? $('#back-to-top').fadeIn() : $('#back-to-top').fadeOut();
