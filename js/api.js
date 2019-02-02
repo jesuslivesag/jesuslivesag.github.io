@@ -26,9 +26,10 @@ $(function () {
 				let tempArray = new Array(element.id.videoId,element.snippet.title,element.snippet.thumbnails.high.url);				
 				videoArray.push(tempArray);
 			}
-			const latestVideos = videoArray.filter((value,index) => { return index < 2}).reverse()			
+			const latestVideos = videoArray.filter((value,index) => { return index < 2}).reverse();
 			setMainVideoSrc(latestVideos);
 			setMainVideoTitle(latestVideos);
+			createGallery(videoArray);
 		}
 	});
 	function setMainVideoSrc(videos){
@@ -44,6 +45,54 @@ $(function () {
 			titleDiv[index].innerText = getVideoTitle(videos[index]);
 		}
 	}
+
+	function createImage(imgSrc){
+		var image = document.createElement("img");
+		image.classList.add("videoThumb");
+		image.src = imgSrc;
+		return image;
+	}
+
+	function createAnchor(urlSrc, imgSrc){
+		var anchor = document.createElement("a");
+		anchor.classList.add("fancybox", "fancybox.iframe");
+		anchor.href = urlSrc;
+		anchor.appendChild(createImage(imgSrc));
+		return anchor;
+	}
+
+	function createFigure(urlSrc, imgSrc){
+		var figure = document.createElement("figure");
+		figure.appendChild(createAnchor(urlSrc, imgSrc));
+		return figure;
+	}
+
+	function createTitle(vidTitle){
+		var title = document.createElement("h4");
+		title.classList.add("videoTitle");
+		title.appendChild(document.createTextNode(vidTitle));
+		return title;
+	}
+
+	function createArticle(urlSrc, imgSrc, vidTitle){
+		var article = document.createElement("article");
+		article.classList.add("video");
+		article.appendChild(createFigure(urlSrc, imgSrc));
+		article.appendChild(createTitle(vidTitle));
+		return article;
+	}
+
+	function createGallery(videoList){
+		var gallery = document.getElementById('videos-gallery');
+		var div = document.createElement("div");
+		div.classList.add("gallery");		
+		for (let index = 2; index < videoList.length; index++) {
+			const videoUrl = "//www.youtube.com/embed/" + videoList[index][0];
+			div.appendChild(createArticle(videoUrl, videoList[index][2], videoList[index][1]));
+		}
+		gallery.appendChild(div);
+	}
+
 });
 
 

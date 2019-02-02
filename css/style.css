@@ -1504,6 +1504,7 @@ header h5{
 
 #footer {
     position: relative;
+    background-color: #FAFAFA;
 }
 
 .footer-logo {
@@ -1536,14 +1537,6 @@ header h5{
   background-color: #6195FF;
   color:#FFF;
 }
-
-.footer-copyright p {
-    text-align: center;
-    font-size: 14px;
-    text-transform: uppercase;
-    margin: 0;
-}
-
 
 /*------------------------------------*\
 	Responsive
@@ -1805,3 +1798,97 @@ header h5{
             transform:scale(0);
   }
 }
+
+/*------------------------------------*\
+	Videos
+\*------------------------------------*/
+
+#videos img {
+    max-width: 100%;
+    height: auto;
+  }
+
+#videos  .video {
+    background: #cececee6;
+    padding-bottom: 20px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+    width: 23%; /* Thumbnails 4 across */
+    margin: 1%;
+    float: left;
+    padding-bottom: 2px;
+  }
+  
+  /* 
+  These styles keep the height of each video thumbnail consistent between YouTube and Vimeo. 
+  Each can have thumbnail sizes that vary by 1px and are likely break your layout. 
+  */
+  
+#videos   .video figure {
+    height: 0;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    margin: 0;
+  }
+
+#videos .gallery{
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+  
+#videos .video figure a {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border: none;
+    line-height: 0;
+  }
+
+  #videos .videoTitle{
+    text-align: center;
+    padding-top: 10px;
+  }
+
+  #videos .videoTitle{
+    text-align: center;
+    padding-top: 10px;
+    font-size: 0.75em;
+  }
+  
+  /* Media Queries - This is the responsive grid. */
+  
+  @media (max-width: 1024px) {
+    #videos .video {
+      width: 31.333%; /* Thumbnails 3 across */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    #videos .video {
+      width: 48%; /* Thumbnails 2 across */
+    }
+  }
+  
+  @media (max-width: 360px) {
+    #videos .video {
+      display: block;
+      width: 96%; /* Single column view. */
+      margin: 2%; /* The smaller the screen, the smaller the percentage actually is. */
+      float: none;
+    }
+  }
+  
+  /* These are my preferred rollover styles. */
+  
+  #videos .video img {
+    width: 100%;
+    opacity: 1;
+  }
+  
+  #videos .video img:hover, .video img:active, .video img:focus {
+    opacity: 0.75;
+  }
+
+  .responsive {
+    width: 100%;
+    height: auto;
+  }
