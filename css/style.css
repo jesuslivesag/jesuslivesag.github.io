@@ -839,10 +839,14 @@ header h5{
 \*------------------------------------*/
 
 .service {
-    position: relative;
-    padding: 40px 20px 40px 70px;
+    /* position: relative;*/
+    padding: 15px 0px;
     margin: 15px 0px;
-    border: 1px solid #EEE;
+    /* border: 1px solid #EEE; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .service i {
